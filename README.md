@@ -1,5 +1,5 @@
 # volume-prediction, By utilizing up-to-date methods
-- From 2022.03~2022.05
+- Personal Project from 2022.03~2022.05
 
 ## TimeGAN Implementation (Dropped)
 bash run_TimeGAN.sh
