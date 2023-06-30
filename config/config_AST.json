@@ -1,0 +1,89 @@
+{
+  "name": "ASTransformer",
+  "run_name": "_ASTransformer+lr_D_0.0001+lr_G_0.0001+d_model_512+embed_dim_120+d_ff_2048+seq_len_45+lmbda_1",
+  "n_gpu": 2,
+  "arch_G": {
+    "type": "EncoderDecoder",
+    "args": {
+      "d_model": 40,
+      "h": 16,
+      "attn_type": "entmax15",
+      "num_class": 2000,
+      "embedding_dim": 45,
+      "d_ff": 32,
+      "dropout": 0.01,
+      "N": 3,
+      "predict_steps": 150,
+      "cov_dim": 21
+    }
+  },
+  "arch_D": {
+    "type": "Discriminator_WGAN",
+    "args": {
+      "train_window": 150,
+      "rnn": false
+    }
+  },
+  "hyperparameter_Tuning": true,
+  "data_loader": {
+    "type": "DataLoader_NASDAQv_AST",
+    "args": {
+      "data_dir": "data/",
+      "batch_size": 16,
+      "subject_map": "subjectmap/subjectmap_volumeLOB_jupyterhub.csv",
+      "start_ind": 0,
+      "end_ind": 450,
+      "p": 300,
+      "q": 150,
+      "sec": 1,
+      "covariates": true,
+      "lob": true,
+      "shuffle": false,
+      "validation_split": 0,
+      "num_workers": 2
+    }
+  },
+  "optimizer_D": {
+    "type": "RMSprop",
+    "args": {
+      "lr": 0.0001
+    }
+  },
+  "optimizer_G": {
+    "type": "OpenAIAdam",
+    "args": {
+      "lr": 6.25e-05,
+      "schedule": "warmup_cosine",
+      "warmup": 0.002,
+      "b1": 0.9,
+      "b2": 0.99,
+      "e": 1e-08,
+      "l2": 0.01,
+      "vector_l2": "store_true",
+      "max_grad_norm": 1
+    }
+  },
+  "metrics": [],
+  "lr_scheduler": {
+    "type": "StepLR",
+    "args": {
+      "step_size": 50,
+      "gamma": 0.1
+    }
+  },
+  "trainer": {
+    "model_name": "ASTransformer",
+    "epochs": 700,
+    "save_dir": "saved/",
+    "save_period": 50,
+    "verbosity": 2,
+    "monitor": "off",
+    "early_stop": 10,
+    "tensorboard": true,
+    "gan": true,
+    "Wloss": true,
+    "critic_iter": 5,
+    "lambda_GP": 10,
+    "lmbda": 1
+  }
+}

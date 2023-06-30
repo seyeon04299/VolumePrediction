@@ -1,0 +1,104 @@
+{
+  "name": "TimeGAN",
+  "run_name": "_TimeGAN+lr_0.001",
+  "n_gpu": 2,
+  "arch": {
+    "type": "TimeGAN",
+    "args": {
+      "feature_dim": 1,
+      "Z_dim": 300,
+      "hidden_dim": 30,
+      "max_seq_len": 300,
+      "num_layers": 3,
+      "padding_value": -1
+    }
+  },
+  "hyperparameter_Tuning": true,
+  "data_loader": {
+    "type": "DataLoader_VolumeAlloc",
+    "args": {
+      "data_dir": "data/",
+      "batch_size": 32,
+      "subject_map": "data/NASDAQ/bigtech_intraday_volumes.csv",
+      "start_ind": 0,
+      "end_ind": 600,
+      "p": 300,
+      "q": 300,
+      "shuffle": false,
+      "validation_split": 0,
+      "num_workers": 2
+    }
+  },
+  "optimizer_e": {
+    "type": "Adam",
+    "args": {
+      "lr": 0.001,
+      "betas": [
+        0.9,
+        0.999
+      ]
+    }
+  },
+  "optimizer_r": {
+    "type": "Adam",
+    "args": {
+      "lr": 0.001,
+      "betas": [
+        0.9,
+        0.999
+      ]
+    }
+  },
+  "optimizer_g": {
+    "type": "Adam",
+    "args": {
+      "lr": 0.001,
+      "betas": [
+        0.9,
+        0.999
+      ]
+    }
+  },
+  "optimizer_d": {
+    "type": "Adam",
+    "args": {
+      "lr": 0.001,
+      "betas": [
+        0.9,
+        0.999
+      ]
+    }
+  },
+  "optimizer_s": {
+    "type": "Adam",
+    "args": {
+      "lr": 0.001,
+      "betas": [
+        0.9,
+        0.999
+      ]
+    }
+  },
+  "metrics": [],
+  "lr_scheduler": {
+    "type": "StepLR",
+    "args": {
+      "step_size": 50,
+      "gamma": 0.1
+    }
+  },
+  "trainer": {
+    "model_name": "TimeGAN",
+    "epochs_emb": 150,
+    "epochs_sup": 150,
+    "epochs_joint": 1500,
+    "save_dir": "saved/",
+    "save_period": 1,
+    "verbosity": 2,
+    "monitor": "off",
+    "early_stop": 10,
+    "tensorboard": true,
+    "dis_thresh": 0.15,
+    "gamma": 1
+  }
+}

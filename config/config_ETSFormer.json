@@ -1,0 +1,73 @@
+{
+  "name": "ETSFormer",
+  "run_name": "_ETSFormer+sec60+seq_30+lab_30+pred_30+lrG_0.0001+dmodel_512+Elayers_2+nheads_8+Dlayers_+dff_+nopeak+dropout0.2",
+  "n_gpu": 2,
+  "arch_G": {
+    "type": "ETSFormer",
+    "args": {
+      "time_features": 21,
+      "d_model": "512",
+      "n_heads": "8",
+      "embed_kernel_size": 3,
+      "e_layers": 2,
+      "K": 4,
+      "dropout": 0.2,
+      "output_latents": true
+    }
+  },
+  "hyperparameter_Tuning": true,
+  "data_loader": {
+    "type": "DataLoader_NASDAQv_Wholedata",
+    "args": {
+      "data_dir": "data/",
+      "batch_size": 2,
+      "subject_map": "subjectmap/subjectmap_volumeLOB_jupyterhub.csv",
+      "start_ind": 0,
+      "label_len": "30",
+      "seq_len": "30",
+      "pred_len": "30",
+      "sec": "60",
+      "freq": "t",
+      "lob": true,
+      "peak": false,
+      "shuffle": false,
+      "validation_split": 0.1,
+      "num_workers": 2
+    }
+  },
+  "optimizer_D": {
+    "type": "RMSprop",
+    "args": {
+      "lr": 0.0001
+    }
+  },
+  "optimizer_G": {
+    "type": "Adam",
+    "args": {
+      "lr": "0.0001",
+      "betas": [
+        0.9,
+        0.999
+      ]
+    }
+  },
+  "metrics": [],
+  "lr_scheduler": {
+    "type": "StepLR",
+    "args": {
+      "step_size": 50,
+      "gamma": 0.1
+    }
+  },
+  "trainer": {
+    "model_name": "ETSFormer",
+    "epochs": 800,
+    "save_dir": "/home/jovyan/logs/",
+    "save_period": 10,
+    "verbosity": 2,
+    "monitor": "min val_MSEloss",
+    "early_stop": 700,
+    "tensorboard": true,
+    "use_amp": false
+  }
+}

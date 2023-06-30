@@ -1,0 +1,291 @@
+{
+  "name": "TransProformer",
+  "run_name": "_TransProformer+gamma_1+opt5_opt6_0.001",
+  "n_gpu": 2,
+  "arch_G0": {
+    "type": "TransProformer",
+    "args": {
+      "enc_in": 21,
+      "dec_in": 21,
+      "c_out": 21,
+      "d_model": "256",
+      "n_heads": "8",
+      "e_layers": 2,
+      "d_layers": 1,
+      "d_ff": "2048",
+      "moving_avg": 25,
+      "factor": 3,
+      "distil": true,
+      "dropout": 0.1,
+      "embed": "timeF",
+      "activation": "gelu",
+      "output_attention": true,
+      "do_predict": true
+    }
+  },
+  "arch_G1": {
+    "type": "TransProformer",
+    "args": {
+      "enc_in": 21,
+      "dec_in": 21,
+      "c_out": 21,
+      "d_model": "256",
+      "n_heads": 8,
+      "e_layers": 2,
+      "d_layers": 1,
+      "d_ff": 2048,
+      "moving_avg": 25,
+      "factor": 3,
+      "distil": true,
+      "dropout": 0.1,
+      "embed": "timeF",
+      "activation": "gelu",
+      "output_attention": true,
+      "do_predict": true
+    }
+  },
+  "arch_G2": {
+    "type": "TransProformer",
+    "args": {
+      "enc_in": 21,
+      "dec_in": 21,
+      "c_out": 21,
+      "d_model": "256",
+      "n_heads": 8,
+      "e_layers": 2,
+      "d_layers": 1,
+      "d_ff": 2048,
+      "moving_avg": 25,
+      "factor": 3,
+      "distil": true,
+      "dropout": 0.1,
+      "embed": "timeF",
+      "activation": "gelu",
+      "output_attention": true,
+      "do_predict": true
+    }
+  },
+  "arch_G3": {
+    "type": "TransProformer",
+    "args": {
+      "enc_in": 21,
+      "dec_in": 21,
+      "c_out": 21,
+      "d_model": "256",
+      "n_heads": 8,
+      "e_layers": 2,
+      "d_layers": 1,
+      "d_ff": 2048,
+      "moving_avg": 25,
+      "factor": 3,
+      "distil": true,
+      "dropout": 0.1,
+      "embed": "timeF",
+      "activation": "gelu",
+      "output_attention": true,
+      "do_predict": true
+    }
+  },
+  "arch_G4": {
+    "type": "TransProformer",
+    "args": {
+      "enc_in": 21,
+      "dec_in": 21,
+      "c_out": 21,
+      "d_model": "256",
+      "n_heads": 8,
+      "e_layers": 2,
+      "d_layers": 1,
+      "d_ff": 2048,
+      "moving_avg": 25,
+      "factor": 3,
+      "distil": true,
+      "dropout": 0.1,
+      "embed": "timeF",
+      "activation": "gelu",
+      "output_attention": true,
+      "do_predict": true
+    }
+  },
+  "arch_G5": {
+    "type": "TransProformer",
+    "args": {
+      "enc_in": 21,
+      "dec_in": 21,
+      "c_out": 21,
+      "d_model": "256",
+      "n_heads": 8,
+      "e_layers": 2,
+      "d_layers": 1,
+      "d_ff": 2048,
+      "moving_avg": 25,
+      "factor": 3,
+      "distil": true,
+      "dropout": 0.1,
+      "embed": "timeF",
+      "activation": "gelu",
+      "output_attention": true,
+      "do_predict": true
+    }
+  },
+  "arch_G6": {
+    "type": "TransProformer",
+    "args": {
+      "enc_in": 21,
+      "dec_in": 21,
+      "c_out": 21,
+      "d_model": "256",
+      "n_heads": 8,
+      "e_layers": 2,
+      "d_layers": 1,
+      "d_ff": 2048,
+      "moving_avg": 25,
+      "factor": 3,
+      "distil": true,
+      "dropout": 0.1,
+      "embed": "timeF",
+      "activation": "gelu",
+      "output_attention": true,
+      "do_predict": true
+    }
+  },
+  "hyperparameter_Tuning": true,
+  "data_loader": {
+    "type": "DataLoader_NASDAQv_Final",
+    "args": {
+      "data_dir": "data/",
+      "batch_size": 64,
+      "subject_map": "subjectmap/subjectmap_2109_2203.csv",
+      "start_ind": 0,
+      "label_len": "48",
+      "seq_len": "48",
+      "pred_len": "4632",
+      "sec": "5",
+      "freq": "t",
+      "lob": true,
+      "peak": false,
+      "shuffle": false,
+      "validation_split": 0.1,
+      "num_workers": 2
+    }
+  },
+  "optimizer_G0": {
+    "type": "Adam",
+    "args": {
+      "lr": "0.0001",
+      "betas": [
+        0.9,
+        0.999
+      ]
+    }
+  },
+  "optimizer_G1": {
+    "type": "Adam",
+    "args": {
+      "lr": "0.0001",
+      "betas": [
+        0.9,
+        0.999
+      ]
+    }
+  },
+  "optimizer_G2": {
+    "type": "Adam",
+    "args": {
+      "lr": "0.0001",
+      "betas": [
+        0.9,
+        0.999
+      ]
+    }
+  },
+  "optimizer_G3": {
+    "type": "Adam",
+    "args": {
+      "lr": "0.001",
+      "betas": [
+        0.9,
+        0.999
+      ]
+    }
+  },
+  "optimizer_G4": {
+    "type": "Adam",
+    "args": {
+      "lr": "0.001",
+      "betas": [
+        0.9,
+        0.999
+      ]
+    }
+  },
+  "optimizer_G5": {
+    "type": "Adam",
+    "args": {
+      "lr": "0.001",
+      "betas": [
+        0.9,
+        0.999
+      ]
+    }
+  },
+  "optimizer_G6": {
+    "type": "Adam",
+    "args": {
+      "lr": "0.0001",
+      "betas": [
+        0.9,
+        0.999
+      ]
+    }
+  },
+  "metrics": [],
+  "lr_scheduler": {
+    "type": "StepLR",
+    "args": {
+      "step_size": 50,
+      "gamma": 0.1
+    }
+  },
+  "trainer": {
+    "model_name": "TransProformer",
+    "prediction_times": [
+      240,
+      360,
+      720,
+      1440,
+      2880,
+      5820,
+      11700,
+      23400
+    ],
+    "sec_intervals": [
+      5,
+      5,
+      10,
+      10,
+      30,
+      30,
+      60
+    ],
+    "epochs": 3000,
+    "save_dir": "/home/jovyan/logs/",
+    "save_period": 100,
+    "verbosity": 2,
+    "monitor": "min val_MSEloss_whole",
+    "early_stop": 1500,
+    "tensorboard": true,
+    "use_amp": false,
+    "gamma": 1,
+    "lambda_steps": [
+      1,
+      0.5,
+      0.25,
+      0.125,
+      0.01,
+      0.01,
+      1
+    ],
+    "criterion": "MSE"
+  }
+}
